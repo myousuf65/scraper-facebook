@@ -10,19 +10,19 @@ app.set("view engine", "ejs");
 // Set views directory (assuming you have a views folder)
 app.set('views', path.resolve('./views'));
 
-const pool = mysql.createPool({
-  host: 'abdladmin.ddns.net',
-  user: 'developer',
-  password: 'csdkms@2019', 
-  database: 'csdkms',
-  port: 14306,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
 
 app.get('/', async (req, res) => {
   try {
+    const pool = mysql.createPool({
+      host: 'abdladmin.ddns.net',
+      user: 'developer',
+      password: 'csdkms@2019', 
+      database: 'csdkms',
+      port: 14306,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0
+    });
     const [results] = await pool.query(
       'SELECT * FROM newscorner2_post WHERE category_id = 1 order by publish_at desc;'
     );
