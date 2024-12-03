@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
       queueLimit: 0
     });
     const [results] = await pool.query(
-      'SELECT * FROM newscorner2_post WHERE category_id = 1 order by publish_at desc;'
+      'SELECT * FROM newscorner2_post WHERE category_id = 4 order by publish_at desc limit 15;'
     );
 
     console.log(results)
